@@ -19,13 +19,13 @@ public Task UploadBlobAsync(string containerName, string containerDirectory, str
 
 public Task MoveBlobAsync(string containerName, string sourceContainerDirectory, string sourceBlobName, string destinationDirectory);
 
-Task<MemoryStream> DownloadBlobAsync(string containerName, string containerDirectory, string blobName);
+public Task<MemoryStream> DownloadBlobAsync(string containerName, string containerDirectory, string blobName);
 
-Task<string> DownloadBlobContentAsync(string containerName, string containerDirectory, string blobName);
+public Task<string> DownloadBlobContentAsync(string containerName, string containerDirectory, string blobName);
 
-Task DeleteBlobAsync(string containerName, string containerDirectory, string blobName);
+public Task DeleteBlobAsync(string containerName, string containerDirectory, string blobName);
 
-Task<List<string>> ListFilesAsync(string containerName, string containerDirectory);
+public Task<List<string>> ListFilesAsync(string containerName, string containerDirectory);
     
 ```
 
