@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <PackageId>Azure.Storage.Blobs.Manager</PackageId>
+        <Authors>Sluk4d</Authors>
+        <Company>Matozap</Company>
+        <Product>Azure.Storage.Blobs.Manager</Product>
+        <Description>DistributedCache is an open source caching abstraction layer for .NET which supports Redis, SQL Server, InMemory, with automatic failure recovery, heath checks, automatic table generation (MSSQL), logging and also allows to clear all keys </Description>
+        <Copyright>Matozap</Copyright>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PackageTags>Azure, Storage, Blobs, Manager, Download, Read, Upload, Move, Delete, Blob, Matozap</PackageTags>
+        <PackageReleaseNotes>Release</PackageReleaseNotes>
+        <RepositoryType>Github</RepositoryType>
+        <RepositoryUrl>https://github.com/Matozap/Azure.Storage.Blobs.Manager</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/Matozap/Azure.Storage.Blobs.Manager</PackageProjectUrl>
+        <PackageIcon>logo.png</PackageIcon>
+        <PackageReadmeFile>NUGET.md</PackageReadmeFile>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <Version>7.0.0</Version>
+        <NoWarn>$(NoWarn);1591</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Azure.Storage.Blobs" Version="12.16.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="logo.png" Pack="true" PackagePath="\" />
+        <None Include="NUGET.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
+
+</Project>
