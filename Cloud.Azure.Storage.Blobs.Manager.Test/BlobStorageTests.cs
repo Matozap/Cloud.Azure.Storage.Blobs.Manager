@@ -1,10 +1,10 @@
-using Azure.Storage.Blobs.Manager.Interfaces;
+using Cloud.Azure.Storage.Blobs.Manager.Interfaces;
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
 using Moq;
 using Xunit;
 
-namespace Azure.Storage.Blobs.Manager.Test;
+namespace Cloud.Azure.Storage.Blobs.Manager.Test;
 
 public class BlobStorageTests
 {

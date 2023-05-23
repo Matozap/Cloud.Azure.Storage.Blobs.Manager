@@ -1,4 +1,4 @@
-﻿namespace Azure.Storage.Blobs.Manager;
+﻿namespace Cloud.Azure.Storage.Blobs.Manager;
 
 public class BlobStorageOptions
 {

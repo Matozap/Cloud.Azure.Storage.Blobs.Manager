@@ -26,7 +26,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Azure.Storage.Blobs.Manager\Azure.Storage.Blobs.Manager.csproj" />
+      <ProjectReference Include="..\Cloud.Azure.Storage.Blobs.Manager\Cloud.Azure.Storage.Blobs.Manager.csproj" />
     </ItemGroup>
 
 </Project>

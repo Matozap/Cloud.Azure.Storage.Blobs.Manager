@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Azure.Storage.Blobs.Manager.Interfaces;
+using Cloud.Azure.Storage.Blobs.Manager.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Azure.Storage.Blobs.Manager;
+namespace Cloud.Azure.Storage.Blobs.Manager;
 
 [ExcludeFromCodeCoverage]
 public static class AzureStorageBlobsManagerMiddleware

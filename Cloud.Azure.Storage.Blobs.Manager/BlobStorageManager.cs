@@ -1,7 +1,8 @@
-﻿using Azure.Storage.Blobs.Manager.Interfaces;
+﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
+using Cloud.Azure.Storage.Blobs.Manager.Interfaces;
 
-namespace Azure.Storage.Blobs.Manager;
+namespace Cloud.Azure.Storage.Blobs.Manager;
 
 public class BlobStorageManager : IBlobStorageManager
     {

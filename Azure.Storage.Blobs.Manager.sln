@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure.Storage.Blobs.Manager", "Azure.Storage.Blobs.Manager\Azure.Storage.Blobs.Manager.csproj", "{A014A3D2-6177-43E4-B877-C0BFBFA35F3E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloud.Azure.Storage.Blobs.Manager", "Cloud.Azure.Storage.Blobs.Manager\Cloud.Azure.Storage.Blobs.Manager.csproj", "{A014A3D2-6177-43E4-B877-C0BFBFA35F3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure.Storage.Blobs.Manager.Test", "Azure.Storage.Blobs.Manager.Test\Azure.Storage.Blobs.Manager.Test.csproj", "{D5F8CFD8-BC22-4771-996C-2AD7F9CF9BCE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloud.Azure.Storage.Blobs.Manager.Test", "Cloud.Azure.Storage.Blobs.Manager.Test\Cloud.Azure.Storage.Blobs.Manager.Test.csproj", "{D5F8CFD8-BC22-4771-996C-2AD7F9CF9BCE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

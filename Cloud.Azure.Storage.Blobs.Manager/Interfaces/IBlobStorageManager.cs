@@ -1,4 +1,4 @@
-﻿namespace Azure.Storage.Blobs.Manager.Interfaces;
+﻿namespace Cloud.Azure.Storage.Blobs.Manager.Interfaces;
 
 public interface IBlobStorageManager
 {

@@ -4,10 +4,10 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <PackageId>Azure.Storage.Blobs.Manager</PackageId>
+        <PackageId>Cloud.Azure.Storage.Blobs.Manager</PackageId>
         <Authors>Sluk4d</Authors>
         <Company>Matozap</Company>
-        <Product>Azure.Storage.Blobs.Manager</Product>
+        <Product>Cloud.Azure.Storage.Blobs.Manager</Product>
         <Description>Injectable abstraction to download, upload, move, map, read and delete blobs from Azure </Description>
         <Copyright>Matozap</Copyright>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
