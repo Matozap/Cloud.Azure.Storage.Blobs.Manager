@@ -1,122 +1,46 @@
-# DistributedCache
+# Azure.Storage.Blobs.Manager
+
+Azure.Storage.Blobs.Manager is an Injectable abstraction to download, upload, move, map, read and delete blobs from Azure.
 
 
-DistributedCache is an open source caching abstraction layer for .NET which supports Redis, SQL Server, InMemory, with automatic
-failure recovery, heath checks, automatic table generation (MSSQL), logging and also allows to clear all keys.
-
-
-It simplifies cache usage by allowing developers to inject it into the application and use it anywhere
-without having to worry about configuration for an specific infrastructure (InMemory, Redis, SQL server).
-
-It is as fast as a cache interface can be and also includes the feature of **CLEAR ALL** keys and **CLEAR ALL WITH PREFIX** which were both 
-missing from IDistributedCache.
-
+It simplifies storage usage by allowing developers to inject it into the application and use it anywhere
+without having to worry about the azure client.
 
 ------------------------------
 
 ### Usage
 
-#### Setting/Getting values from cache
+#### Injection
 
 Just inject and use the ICache interface to store or obtain values from the cache like the example below:
 
 ```csharp
 
-public class CountryManager
+public class SomeService
 {
-    private readonly ICache _cache;
+    private readonly IBlobStorageManager _storageManager;
 
-    public CountryManager(ICache cache)
+    public SomeService(IBlobStorageManager storageManager)
     {
-        _cache = cache;
-    }
-
-    public async Task<List<CountryData>> GetAllCountriesAsync(CancellationToken cancellationToken)
-    {
-        var cacheKey = "some cache key";
-
-        var cachedValue = await _cache.GetCacheValueAsync<List<CountryData>>(cacheKey, cancellationToken);
-        if (cachedValue != null)
-        {
-            return cachedValue;
-        }
-
-        var dataValue = await GetAllCountriesFromRepositoryAsync();
-        _ = _cache.SetCacheValueAsync(cacheKey, dataValue);
-
-        return dataValue;
-    }
+        _storageManager = storageManager;
+    }    
 }
-
-```
-
-#### Setting cache TTL
-
-There are 2 ways to achieve that:
-
-1. Using a default TTL (see configuration section)
-2. Overriding the default TTL on a case-by-case basis like this:
-
-```csharp
-
-var ttl = new DistributedCacheEntryOptions
-{
-    AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(60),
-    SlidingExpiration = TimeSpan.FromSeconds(30)
-};
-_ = _cache.SetCacheValueAsync(cacheKey, dataValue, ttl, cancellationToken);
 
 ```
 
 
 ### Configuration
 
-#### Scenario 1: InMemory Cache
+#### Startup/program
 
-This is the most basic, yet common, scenario in which the application uses a cache in memory to increase the performance of a single
-instance of an application.
-
-```csharp
-services.AddDistributedCache(options =>
-{
-    options.Configure(CacheType.InMemory);
-});
-```
-
-###
-
-#### Scenario 2: Redis with automatic failure recovery
-
-This configuration use redis infrastructure and will check if it is healthy, in case of repeated failures (`maxErrorsAllowed`) it will automatically
-disable the cache and will check again in the interval given (`resetIntervalMinutes`).
+Just add below lines to have the IBlobStorageManager registered in the service collection and ready to use anywhere.
 
 ```csharp
-var connectionString = "some cache connection string";
-services.AddDistributedCache(options =>
+services.AddAzureBlobStorage(options =>
 {
-    options.Configure(CacheType.Redis, connectionString, "myApplicationCacheInstance")
-        .ConfigureHealthCheck(enabled:true, maxErrorsAllowed:5, resetIntervalMinutes:2);
+    options.WithEndpoint("<storage endpoint>");
 });
 ```
-
-###
-
-#### Scenario 3: SQL Server with automatic failure recovery
-
-This configuration use redis infrastructure and will check if it is healthy, in case of repeated failures (`maxErrorsAllowed`) it will automatically
-disable the cache and will check again in the interval given (`resetIntervalMinutes`).
-
-```csharp
-var connectionString = "some cache connection string";
-services.AddDistributedCache(options =>
-{
-    options.Configure(CacheType.SqlServer, connectionString, "myApplicationCacheInstance")
-        .ConfigureHealthCheck(enabled:true, maxErrorsAllowed:5, resetIntervalMinutes:2)
-        .AddDefaultTtl(TimeSpan.FromSeconds(60), TimeSpan.FromSeconds(30))
-        .DisableCache(false);
-});
-```
-
 
 ###
 

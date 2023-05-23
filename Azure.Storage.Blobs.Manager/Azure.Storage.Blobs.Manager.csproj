@@ -8,7 +8,7 @@
         <Authors>Sluk4d</Authors>
         <Company>Matozap</Company>
         <Product>Azure.Storage.Blobs.Manager</Product>
-        <Description>DistributedCache is an open source caching abstraction layer for .NET which supports Redis, SQL Server, InMemory, with automatic failure recovery, heath checks, automatic table generation (MSSQL), logging and also allows to clear all keys </Description>
+        <Description>Injectable abstraction to download, upload, move, map, read and delete blobs from Azure </Description>
         <Copyright>Matozap</Copyright>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <PackageTags>Azure, Storage, Blobs, Manager, Download, Read, Upload, Move, Delete, Blob, Matozap</PackageTags>
