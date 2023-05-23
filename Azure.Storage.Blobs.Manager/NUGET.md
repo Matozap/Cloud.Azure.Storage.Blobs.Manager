@@ -6,6 +6,24 @@ Azure.Storage.Blobs.Manager is an Injectable abstraction to download, upload, mo
 It simplifies storage usage by allowing developers to inject it into the application and use it anywhere
 without having to worry about the azure client.
 
+### Available Methods
+
+```csharp
+
+public Task UploadBlobAsync(string containerName, string containerDirectory, string blobName, MemoryStream stream);
+
+public Task MoveBlobAsync(string containerName, string sourceContainerDirectory, string sourceBlobName, string destinationDirectory);
+
+Task<MemoryStream> DownloadBlobAsync(string containerName, string containerDirectory, string blobName);
+
+Task<string> DownloadBlobContentAsync(string containerName, string containerDirectory, string blobName);
+
+Task DeleteBlobAsync(string containerName, string containerDirectory, string blobName);
+
+Task<List<string>> ListFilesAsync(string containerName, string containerDirectory);
+    
+```
+
 ------------------------------
 
 ### Usage
