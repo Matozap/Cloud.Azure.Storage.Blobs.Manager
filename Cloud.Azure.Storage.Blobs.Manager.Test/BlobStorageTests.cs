@@ -26,30 +26,30 @@ public class BlobStorageTests
     }
 
     [Fact]
-    public void UploadBlobToStorageInvalidMemoryStream()
+    public async Task UploadBlobToStorageInvalidMemoryStream()
     {
         var storage = new BlobStorageManager(_endpoint);
-        var act = () => storage.UploadBlobAsync("A", "B", "C", null).Wait();
-
-        act.Should().Throw<ArgumentException>();
+        var act = () => storage.UploadBlobAsync("A", "B", "C", null!);
+        
+        await act.Should().ThrowAsync<ArgumentException>();
     }
 
     [Fact]
-    public void UploadBlobToStorageInvalidBlobName()
+    public async Task UploadBlobToStorageInvalidBlobName()
     {
         var storage = new BlobStorageManager(_endpoint);
-        var act = () => storage.UploadBlobAsync("A", "B", "", new MemoryStream()).Wait();
+        var act = () => storage.UploadBlobAsync("A", "B", "", new MemoryStream());
 
-        act.Should().Throw<ArgumentException>();
+        await act.Should().ThrowAsync<ArgumentException>();
     }
 
     [Fact]
-    public void UploadBlobToStorageInvalidContainerName()
+    public async Task UploadBlobToStorageInvalidContainerName()
     {
         var storage = new BlobStorageManager(_endpoint);
-        var act = () => storage.UploadBlobAsync("", "B", "C", new MemoryStream()).Wait();
+        var act = () => storage.UploadBlobAsync("", "B", "C", new MemoryStream());
 
-        act.Should().Throw<ArgumentException>();
+        await act.Should().ThrowAsync<ArgumentException>();
     }
 
     [Fact]
@@ -64,21 +64,21 @@ public class BlobStorageTests
     }
 
     [Fact]
-    public void DownloadBlobToStorageInvalidBlobName()
+    public async Task DownloadBlobToStorageInvalidBlobName()
     {
         var storage = new BlobStorageManager(_endpoint);
-        var act = () => storage.DownloadBlobAsync("A", "B", "").Wait();
+        var act = () => storage.DownloadBlobAsync("A", "B", "");
 
-        act.Should().Throw<ArgumentException>();
+        await act.Should().ThrowAsync<ArgumentException>();
     }
 
     [Fact]
-    public void DownloadBlobToStorageInvalidContainerName()
+    public async Task DownloadBlobToStorageInvalidContainerName()
     {
         var storage = new BlobStorageManager(_endpoint);
-        var act = () => storage.DownloadBlobAsync("", "B", "C").Wait();
+        var act = () => storage.DownloadBlobAsync("", "B", "C");
 
-        act.Should().Throw<ArgumentException>();
+        await act.Should().ThrowAsync<ArgumentException>();
     }
 
     [Fact]
@@ -93,21 +93,21 @@ public class BlobStorageTests
     }
 
     [Fact]
-    public void DownloadBlobContentFromStorageInvalidBlobName()
+    public async Task DownloadBlobContentFromStorageInvalidBlobName()
     {
         var storage = new BlobStorageManager(_endpoint);
-        var act = () => storage.DownloadBlobContentAsync("A", "B", "").Wait();
+        var act = () => storage.DownloadBlobContentAsync("A", "B", "");
 
-        act.Should().Throw<ArgumentException>();
+        await act.Should().ThrowAsync<ArgumentException>();
     }
 
     [Fact]
-    public void DownloadBlobContentFromStorageInvalidContainerName()
+    public async Task DownloadBlobContentFromStorageInvalidContainerName()
     {
         var storage = new BlobStorageManager(_endpoint);
-        var act = () => storage.DownloadBlobContentAsync("", "B", "C").Wait();
+        var act = () => storage.DownloadBlobContentAsync("", "B", "C");
 
-        act.Should().Throw<ArgumentException>();
+        await act.Should().ThrowAsync<ArgumentException>();
     }
 
     [Fact]
@@ -122,30 +122,30 @@ public class BlobStorageTests
     }
 
     [Fact]
-    public void MoveBlobToStorageInvalidSourceAndDestination()
+    public async Task MoveBlobToStorageInvalidSourceAndDestination()
     {
         var storage = new BlobStorageManager(_endpoint);
-        var act = () => storage.MoveBlobAsync("A", "B", "C", "B").Wait();
+        var act = () => storage.MoveBlobAsync("A", "B", "C", "B");
 
-        act.Should().Throw<AggregateException>();
+        await act.Should().ThrowAsync<InvalidOperationException>();
     }
 
     [Fact]
-    public void MoveBlobToStorageInvalidBlobName()
+    public async Task MoveBlobToStorageInvalidBlobName()
     {
         var storage = new BlobStorageManager(_endpoint);
-        var act = () => storage.MoveBlobAsync("A", "B", "", "D").Wait();
+        var act = () => storage.MoveBlobAsync("A", "B", "", "D");
 
-        act.Should().Throw<ArgumentException>();
+        await act.Should().ThrowAsync<ArgumentException>();
     }
 
     [Fact]
-    public void MoveBlobToStorageInvalidContainerName()
+    public async Task MoveBlobToStorageInvalidContainerName()
     {
         var storage = new BlobStorageManager(_endpoint);
-        var act = () => storage.MoveBlobAsync("", "B", "C", "D").Wait();
+        var act = () => storage.MoveBlobAsync("", "B", "C", "D");
 
-        act.Should().Throw<ArgumentException>();
+        await act.Should().ThrowAsync<ArgumentException>();
     }
 
     [Fact]
@@ -160,21 +160,21 @@ public class BlobStorageTests
     }
 
     [Fact]
-    public void DeleteBlobToStorageInvalidBlobName()
+    public async Task DeleteBlobToStorageInvalidBlobName()
     {
         var storage = new BlobStorageManager(_endpoint);
-        var act = () => storage.DeleteBlobAsync("A", "B", "").Wait();
+        var act = () => storage.DeleteBlobAsync("A", "B", "");
 
-        act.Should().Throw<ArgumentException>();
+        await act.Should().ThrowAsync<ArgumentException>();
     }
 
     [Fact]
-    public void DeleteBlobToStorageInvalidContainerName()
+    public async Task DeleteBlobToStorageInvalidContainerName()
     {
         var storage = new BlobStorageManager(_endpoint);
-        var act = () => storage.DeleteBlobAsync("", "B", "C").Wait();
+        var act = () => storage.DeleteBlobAsync("", "B", "C");
 
-        act.Should().Throw<ArgumentException>();
+        await act.Should().ThrowAsync<ArgumentException>();
     }
 
     [Fact]
@@ -189,12 +189,12 @@ public class BlobStorageTests
     }
 
     [Fact]
-    public void ListBlobsInvalidContainerName()
+    public async Task ListBlobsInvalidContainerName()
     {
         var storage = new BlobStorageManager(_endpoint);
-        var act = () => storage.ListFilesAsync("", "B").Wait();
+        var act = () => storage.ListFilesAsync("", "B");
 
-        act.Should().Throw<ArgumentException>();
+        await act.Should().ThrowAsync<ArgumentException>();
     }
 
     private void SetupMockedStorageManager()
